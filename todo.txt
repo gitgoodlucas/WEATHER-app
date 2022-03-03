@@ -1,0 +1,6 @@
+// TODO: if statement to check if the city is inexistent.
+// TODO: Display country flags.
+// TODO: Organize files.
+// TODO: Spotted an error while searching for "CANADA".
+
+// Change currWeather_data to geocoding-api.
