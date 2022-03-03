@@ -46,7 +46,7 @@ document.querySelector(".search-bar").addEventListener("keyup", function(event) 
     }
 });
 
-// TODO: Event listener to check if the city is inexistent.
+// TODO: if statement to check if the city is inexistent.
 // TODO: Display country flags.
 //
 
