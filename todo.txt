@@ -1,6 +1,13 @@
-// TODO: if statement to check if the city is inexistent.
-// TODO: Display country flags.
-// TODO: Organize files.
-// TODO: Spotted an error while searching for "CANADA".
+# IMPORTANT
 
-// Change currWeather_data to geocoding-api.
+    // TODO: if statement to check if the city is inexistent or not found.
+    // TODO: Organize files.
+    // TODO: Spotted a gramatical error while searching for "CANADA". :: FIX: Change background-image source to google's default.
+    // TODO: Switch button to change between Celsius and Fahrenheit.
+
+    // Merge currWeather_data with geocoding-api.
+
+# DECORATIVE/OPTIONAL
+
+    // TODO: Display country flags.
+    // TODO: ADD Tab icon.
