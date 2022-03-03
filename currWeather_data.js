@@ -25,7 +25,7 @@ let weather = {
         document.querySelector(".humidity").innerText = "Humidity: " + parseInt(humidity) + "%";
         document.querySelector(".wind").innerText = "Wind Speed: " + speed + " km/h";
         document.querySelector(".weather").classList.remove("loading");
-        document.body.style.backgroundImage = "url('https://source.unsplash.com/1920x1080/?" + name + "')"
+        document.body.style.backgroundImage = "url('https://source.unsplash.com/1920x1080/?" + name + "city" + "')"
     },
     // Searches for the value added into the search-bar text box.
     search: function () {
@@ -47,6 +47,8 @@ document.querySelector(".search-bar").addEventListener("keyup", function(event) 
 });
 
 // TODO: Event listener to check if the city is inexistent.
+// TODO: Display country flags.
+//
 
 // Waits the page to be fully loaded to call the fetchWeather.
 weather.fetchWeather("Praia Grande");
