@@ -46,9 +46,5 @@ document.querySelector(".search-bar").addEventListener("keyup", function(event) 
     }
 });
 
-// TODO: if statement to check if the city is inexistent.
-// TODO: Display country flags.
-//
-
 // Waits the page to be fully loaded to call the fetchWeather.
 weather.fetchWeather("Praia Grande");
