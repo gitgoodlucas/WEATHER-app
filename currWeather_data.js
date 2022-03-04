@@ -8,8 +8,19 @@ let weather = {
             + this.apiKey
             )
         // Once the url is fetched, will get the response and put into data json format.
-        .then((response) => response.json())
-        .then((data) => this.displayWeather(data));
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error("City not found..."),
+            window.alert("City not found...");
+        })
+        .then((data) => {
+            this.displayWeather(data);
+        })
+        .catch((error) => {
+            console.log(error)
+        });
     },
 
     displayWeather: function(data) {
@@ -28,7 +39,8 @@ let weather = {
         document.querySelector(".wind").innerText = "Wind Speed: " + speed + " km/h";
         //document.querySelector(".country").src = ""
         document.querySelector(".weather").classList.remove("loading");
-        document.body.style.backgroundImage = "url('https://source.unsplash.com/1920x1080/?" + name + " city" + "')"
+        //document.body.style.backgroundImage = "url('https://source.unsplash.com/1920x1080/?" + name + " city" + "')"
+        
     },
     // Searches for the value added into the search-bar text box.
     search: function () {
