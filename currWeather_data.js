@@ -3,19 +3,21 @@ let weather = {
     fetchWeather: function (city) {
         fetch(
             "http://api.openweathermap.org/data/2.5/weather?q="
-             + city 
-             + "&units=metric&appid=" 
-             + this.apiKey
+            + city 
+            + "&units=metric&appid=" 
+            + this.apiKey
             )
         // Once the url is fetched, will get the response and put into data json format.
         .then((response) => response.json())
         .then((data) => this.displayWeather(data));
     },
+
     displayWeather: function(data) {
         const { name } = data;
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
+        //const { country } = data.sys;
         console.log(name,icon,description,temp,humidity,speed);
 
         document.querySelector(".city").innerText = "Weather in " + name;
@@ -24,6 +26,7 @@ let weather = {
         document.querySelector(".description").innerText = description;
         document.querySelector(".humidity").innerText = "Humidity: " + parseInt(humidity) + "%";
         document.querySelector(".wind").innerText = "Wind Speed: " + speed + " km/h";
+        //document.querySelector(".country").src = ""
         document.querySelector(".weather").classList.remove("loading");
         document.body.style.backgroundImage = "url('https://source.unsplash.com/1920x1080/?" + name + " city" + "')"
     },
