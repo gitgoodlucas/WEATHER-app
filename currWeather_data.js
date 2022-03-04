@@ -12,7 +12,6 @@ let weather = {
             if (response.ok) {
                 return response.json();
             }
-            throw new Error("City not found..."),
             window.alert("City not found...");
         })
         .then((data) => {
@@ -47,6 +46,62 @@ let weather = {
     }
 };
 
+let geocode = {
+    reverseGeocode: function(latitude, longitude) {
+        var api_key = 'e52a83ab87744023bba2f482c35085ff';
+
+        var api_url = 'https://api.opencagedata.com/geocode/v1/json'
+
+        var request_url = api_url
+            + '?'
+            + 'key=' + api_key
+            + '&q=' + encodeURIComponent(latitude + ',' + longitude)
+            + '&pretty=1'
+            + '&no_annotations=1';
+
+        // see full list of required and optional parameters:
+        // https://opencagedata.com/api#forward
+
+        var request = new XMLHttpRequest();
+        request.open('GET', request_url, true);
+
+        request.onload = function() {
+
+            if (request.status === 200){ 
+            // Success!
+            var data = JSON.parse(request.responseText);
+            weather.fetchWeather(data.results[0].components.city);
+
+            } else if (request.status <= 500){ 
+            // We reached our target server, but it returned an error
+            console.log("unable to geocode! Response code: " + request.status);
+            var data = JSON.parse(request.responseText);
+            console.log('error msg: ' + data.status.message);
+            } else {
+            console.log("server error");
+            }
+        };
+
+        request.onerror = function() {
+            // There was a connection error of some sort
+            console.log("unable to connect to server");        
+        };
+
+        request.send();  // make the request
+    },
+    getLocation: function () {
+        function success(data){
+            geocode.reverseGeocode(data.coords.latitude, data.coords.longitude);
+        }
+        if (navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(success, console.error);
+        }
+        else{
+            weather.fetchWeather("Praia Grande");
+        }
+    }
+};
+
 document
 .querySelector(".search button")
 .addEventListener("click", function () {
@@ -60,5 +115,5 @@ document.querySelector(".search-bar").addEventListener("keyup", function(event) 
     }
 });
 
-// Waits the page to be fully loaded to call the fetchWeather.
-weather.fetchWeather("Praia Grande");
+// Call the getlocation function, if fails, gets the default fetch value
+geocode.getLocation();
