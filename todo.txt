@@ -10,4 +10,3 @@
 # DECORATIVE/OPTIONAL
 
     // TODO: Display country flags.
-    // TODO: ADD Tab icon.

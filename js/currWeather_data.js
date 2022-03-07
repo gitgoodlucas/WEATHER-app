@@ -27,7 +27,7 @@ let weather = {
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
-        //const { country } = data.sys;
+        const { country } = data.sys;
         console.log(name,icon,description,temp,humidity,speed);
 
         document.querySelector(".city").innerText = "Weather in " + name;
@@ -36,7 +36,7 @@ let weather = {
         document.querySelector(".description").innerText = description;
         document.querySelector(".humidity").innerText = "Humidity: " + parseInt(humidity) + "%";
         document.querySelector(".wind").innerText = "Wind Speed: " + speed + " km/h";
-        //document.querySelector(".country").src = ""
+        document.querySelector(".country").innerText = country;
         document.querySelector(".weather").classList.remove("loading");
         document.body.style.backgroundImage = "url('https://source.unsplash.com/1920x1080/?" + name + " city" + "')"
     },
